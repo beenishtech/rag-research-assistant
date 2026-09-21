@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ur" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Paper RAG Assistant</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar / Upload Panel -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-brain"></i>
+                <h2>RAG Engine</h2>
+            </div>
+            
+            <div class="context-group">
+                <label for="pdfUpload">
+                    <i class="fa-solid fa-file-pdf"></i> Upload Research Papers (PDF)
+                </label>
+                <!-- Multiple PDF Upload Input -->
+                <input type="file" id="pdfUpload" accept=".pdf" multiple style="margin-bottom: 10px; color: white; width: 100%;">
+                <button type="button" id="uploadBtn" onclick="uploadPDFs()" style="background: #4f46e5; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; width: 100%;">
+                    <i class="fa-solid fa-upload"></i> Upload & Process PDFs
+                </button>
+                <small id="uploadStatus" style="display: block; margin-top: 8px; color: #a5b4fc;"></small>
+            </div>
+
+            <div class="sidebar-footer">
+                <p>Powered by Groq & FastAPI</p>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-main">
+            <header class="chat-header">
+                <h3><i class="fa-solid fa-comments"></i> Research Chat</h3>
+                <span class="status-badge"><span class="dot"></span> Online</span>
+            </header>
+
+            <!-- Chat Messages Box -->
+            <div class="chat-messages" id="chatMessages">
+                <div class="message ai-message">
+                    <div class="message-icon"><i class="fa-solid fa-robot"></i></div>
+                    <div class="message-content">
+                        <p>Please upload your research papers (PDFs) from the left side first, and then ask me questions about them.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div class="typing-indicator" id="typingIndicator" style="display: none;">
+                <div class="message-icon"><i class="fa-solid fa-robot"></i></div>
+                <div class="typing-bubble">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="chat-input-area">
+                <form id="chatForm" onsubmit="handleSendMessage(event)">
+                    <input type="text" id="questionInput" placeholder="Apna sawal yahan likhein..." autocomplete="off" required>
+                    <button type="submit" id="sendBtn">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="/static/script.js"></script>
+</body>
+</html>
