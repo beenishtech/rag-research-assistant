@@ -8,7 +8,7 @@ load_dotenv()
 
 api_key = os.getenv("GROQ_API_KEY")
 if not api_key:
-    raise ValueError("GROQ_API_KEY nahi mili! Please .env file check karein.")
+    raise ValueError("GROQ_API_KEY not found! Please .env file check.")
 
 client = Groq(api_key=api_key)
 
