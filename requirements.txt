@@ -1,6 +1,6 @@
 fastapi
 uvicorn
-pypdf
-groq
-python-multipart
 pdfplumber
+python-dotenv
+groq
+pydantic
